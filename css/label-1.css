@@ -1,0 +1,50 @@
+@page {
+  size: 3.5in 1.125in;
+  margin: 0in !important;
+}
+@media print {
+  html, body {
+    width: 3.5in;
+    height: 1in;
+    margin: 0px;
+    padding: 10px;
+    padding-top: 0.25in;
+  }
+  #sku{
+  	display: none;
+  }
+  #print-margin{
+	margin: 0;
+	padding: 0;
+	border: 0px;
+}
+  
+}  
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+#print-margin{
+	border: 1px black solid;
+	width: 3.4in;
+	height: 1in;
+	display: flex;
+}
+
+
+#right-content{
+	margin:0.05in;
+	margin-left: 0.1in;
+	padding-top: 0.1in;
+}
+img#barcode{
+	height: 1in;
+	width: auto;
+}
+
+span#title {
+	font-size: 0.2in;
+	font-family: sans-serif;
+	font-weight: bold;
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Label print</title>
+
+  <link rel="stylesheet" href="css/label-1.css">
+</head>
+
+<body>
+  <form method="GET" action="https://s3.amazonaws.com/labelprinter.aaronbeekay.info/label-printer/pl.html">
+  Title: <input name="title" type="text"></input><br />
+  Desc: <input name="desc" type="text"></input><br />
+  Barcode: <input name="barcode" type="text"></input><br />
+  Qty: <input type="number" name="qty"></input><br />
+  Now? <input type="hidden" name="right" value="now">
+  <input type="submit" value="PRINT NOW!!!!!!">
+  </form>
+  
+  	<script src="js/socket.io.js"></script>
+	<script>
+	  var socket = io('http://localhost:5000/');
+	  socket.on('connect', function(){
+	  	console.log("Connected to socketz");
+	  });
+	  socket.on('notice', function(data){ 
+	  	console.log(data); 
+		});
+	  socket.on('disconnect', function(){});
+	</script>
+</body>
+</html>

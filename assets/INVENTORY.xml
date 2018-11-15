@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DieCutLabel Version="8.0" Units="twips" MediaType="Default">
+  <PaperOrientation>Landscape</PaperOrientation>
+  <Id>Address</Id>
+  <PaperName>30252 Address</PaperName>
+  <DrawCommands>
+    <RoundRectangle X="0" Y="0" Width="1581" Height="5040" Rx="270" Ry="270"/>
+  </DrawCommands>
+  <ObjectInfo>
+    <TextObject>
+      <Name>TITLE</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <HorizontalAlignment>Left</HorizontalAlignment>
+      <VerticalAlignment>Middle</VerticalAlignment>
+      <TextFitMode>AlwaysFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>Title text</String>
+          <Attributes>
+            <Font Family="Helvetica" Size="13" Bold="True" Italic="False" Underline="False" Strikeout="False"/>
+            <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <Bounds X="952.2937" Y="178.3812" Width="3376.462" Height="382.6219"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <TextObject>
+      <Name>DESC</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <HorizontalAlignment>Left</HorizontalAlignment>
+      <VerticalAlignment>Top</VerticalAlignment>
+      <TextFitMode>ShrinkToFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>Description text</String>
+          <Attributes>
+            <Font Family="Helvetica" Size="13" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+            <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <Bounds X="948.9343" Y="516.4281" Width="3375.759" Height="884.0282"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <BarcodeObject>
+      <Name>BARCODE</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="255" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation90</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <Text>12345</Text>
+      <Type>Code128Auto</Type>
+      <Size>Small</Size>
+      <TextPosition>None</TextPosition>
+      <TextFont Family="Helvetica" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <CheckSumFont Family="Helvetica" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <TextEmbedding>None</TextEmbedding>
+      <ECLevel>0</ECLevel>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <QuietZonesPadding Left="0" Right="0" Top="0" Bottom="0"/>
+    </BarcodeObject>
+    <Bounds X="331.2" Y="57.59995" Width="488.125" Height="1435.2"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <TextObject>
+      <Name>TEXT</Name>
+      <ForeColor Alpha="255" Red="255" Green="255" Blue="255"/>
+      <BackColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation90</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>False</IsVariable>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <VerticalAlignment>Middle</VerticalAlignment>
+      <TextFitMode>ShrinkToFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>SLIRP ITEM</String>
+          <Attributes>
+            <Font Family="Helvetica" Size="13" Bold="True" Italic="False" Underline="False" Strikeout="False"/>
+            <ForeColor Alpha="255" Red="255" Green="255" Blue="255"/>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <Bounds X="4432.975" Y="57.59995" Width="378.9844" Height="1435.2"/>
+  </ObjectInfo>
+</DieCutLabel>
