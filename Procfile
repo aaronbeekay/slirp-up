@@ -1,1 +1,1 @@
-web: python3 straw.py
+web: gunicorn --worker-class socketio.sgunicorn.GeventSocketIOWorker --log-file=- straw:app
