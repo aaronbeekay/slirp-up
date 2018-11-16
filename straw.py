@@ -243,7 +243,7 @@ def createNewShopifyProductAndVariants( product ):
 			v = pr.variants[i]
 			if v.option1 == var['Option1 Value']:	# this is the right new/used variant (avoid counting errors)
 				v.barcode = var['barcode']
-			logger.debug('Assigned barcode {} to variant {}...'.format(v.barcode, v.option1)
+			logger.debug('Assigned barcode {} to variant {}...'.format(v.barcode, v.option1))
 		
 		pr.save() # TODO second round of error checking on this one
 		
