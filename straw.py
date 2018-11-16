@@ -93,7 +93,7 @@ def productListFromInputFormJson( input ):
 		variantdata = {
 			'Option1 Name': 'Condition',
 			'Option1 Value': 'New',
-			'Barcode': newBarcode(),
+			'barcode': newBarcode(),
 			'condition-notes': safeGet(input, 'condition-notes', 'value'),
 			'Ownership': safeGet(input, 'Owner', 'value'),
 			'Sunk-cost': float(safeGet(input, 'Purchase_price', 'value')),
@@ -110,7 +110,7 @@ def productListFromInputFormJson( input ):
 		variantdata = {
 			'Option1 Name': 'Condition',
 			'Option1 Value': 'Used - Like new',
-			'Barcode': newBarcode(),
+			'barcode': newBarcode(),
 			'condition-notes': safeGet(input, 'condition-notes', 'value'),
 			'Ownership': safeGet(input, 'Owner', 'value'),
 			'Sunk-cost': float(safeGet(input, 'Purchase_price', 'value')),
@@ -128,7 +128,7 @@ def productListFromInputFormJson( input ):
 		variantdata = {
 			'Option1 Name': 'Condition',
 			'Option1 Value': 'Used - Good',
-			'Barcode': newBarcode(),
+			'barcode': newBarcode(),
 			'condition-notes': safeGet(input, 'condition-notes', 'value'),
 			'Ownership': safeGet(input, 'Owner', 'value'),
 			'Sunk-cost': float(safeGet(input, 'Purchase_price', 'value')),
@@ -145,7 +145,7 @@ def productListFromInputFormJson( input ):
 		variantdata = {
 			'Option1 Name': 'Condition',
 			'Option1 Value': 'Used - Fair',
-			'Barcode': newBarcode(),
+			'barcode': newBarcode(),
 			'condition-notes': safeGet(input, 'condition-notes', 'value'),
 			'Ownership': safeGet(input, 'Owner', 'value'),
 			'Sunk-cost': float(safeGet(input, 'Purchase_price', 'value')),
@@ -162,7 +162,7 @@ def productListFromInputFormJson( input ):
 		variantdata = {
 			'Option1 Name': 'Condition',
 			'Option1 Value': 'Used - as-is/for parts',
-			'Barcode': newBarcode(),
+			'barcode': newBarcode(),
 			'condition-notes': safeGet(input, 'condition-notes', 'value'),
 			'Ownership': safeGet(input, 'Owner', 'value'),
 			'Sunk-cost': float(safeGet(input, 'Purchase_price', 'value')),
@@ -263,7 +263,7 @@ def make_products():
 	id,prod = createNewShopifyProductAndVariants(products[0])
 	qtys = [ prod['variants'][i]['qty-reported'] for i in range(len(prod['variants']))]
 	logger.debug(qtys)
-	barcodes = [ prod['variants'][i]['Barcode'] for i in range(len(prod['variants']))]
+	barcodes = [ prod['variants'][i]['barcode'] for i in range(len(prod['variants']))]
 	logger.debug(barcodes)
 	name = prod['Title']
 	

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <form method="GET" action="/static/pl.html">
+  <form method="GET" action="static/pl.html">
   Title: <input name="title" type="text"></input><br />
   Desc: <input name="desc" type="text"></input><br />
   Barcode: <input name="barcode" type="text"></input><br />
@@ -21,7 +21,7 @@
   
   	<script src="js/socket.io.js"></script>
 	<script>
-	  var socket = io();
+	  var socket = io('https://salty-savannah-71786.herokuapp.com/');
 	  socket.on('connect', function(){
 	  	console.log("Connected to socketz");
 	  });
@@ -33,7 +33,7 @@
 	  		var title = data[0];
 	  		var qtys = data[1];
 	  		var barcodes = data[2];
-	  		var uri = `/static/pl.html?title=${title}&desc=New&barcode=${barcodes[0]}&qty=${qtys[0]}&right=now&die=die`
+	  		var uri = `static/pl.html?title=${title}&desc=New&barcode=${barcodes[0]}&qty=${qtys[0]}&right=now&die=die`
 	  		window.open(uri,'_blank');
 		});
 	  socket.on('disconnect', function(){});
