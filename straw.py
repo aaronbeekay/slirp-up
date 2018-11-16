@@ -29,9 +29,18 @@ logger.addHandler(ch)
 
 if __name__ != '__main__':	# only do this when running w gunicorn
 	glogs = logging.getLogger('gunicorn.error')
+	# don't need to put time in logs because it's already there
+	formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+	
+	fh.setFormatter(formatter)
+	ch.setFormatter(formatter)
 	for h in glogs.handlers:
-		logger.setLevel(logging.DEBUG, h)
+		h.setFormatter(formatter)
+		#logger.setLevel(logging.DEBUG, h)
 		logger.addHandler(h)
+		
+		
+		
 		
 
 shop_url = "https://%s:%s@glitchlab.myshopify.com/admin" % ('2377f924487957c801e1d38eda4d984e', '585f1f62a7443249160bef32d1a5e4ba')
