@@ -601,6 +601,9 @@ function getUrlParameter(sParam) {
 						for(i=1;i<qty;i++){ printfuckinlabel(); }
 					}
 				}
+				if(getUrlParameter('die')=='yes'){
+					window.close();
+				}
 			} else {
 				// ok we kinda give a fuck
 				var title = getUrlParameter('title').replace(/\+/gi,' ');

@@ -1,0 +1,4 @@
+ShopifyAPI
+flask-socketio
+gunicorn
+

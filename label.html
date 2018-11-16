@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <form method="GET" action="https://s3.amazonaws.com/labelprinter.aaronbeekay.info/label-printer/pl.html">
+  <form method="GET" action="/static/pl.html">
   Title: <input name="title" type="text"></input><br />
   Desc: <input name="desc" type="text"></input><br />
   Barcode: <input name="barcode" type="text"></input><br />
@@ -21,12 +21,20 @@
   
   	<script src="js/socket.io.js"></script>
 	<script>
-	  var socket = io('http://localhost:5000/');
+	  var socket = io();
 	  socket.on('connect', function(){
 	  	console.log("Connected to socketz");
 	  });
 	  socket.on('notice', function(data){ 
 	  	console.log(data); 
+		});
+		socket.on('newproduct', function(data){ 
+	  	console.log(data); 
+	  		var title = data[0];
+	  		var qtys = data[1];
+	  		var barcodes = data[2];
+	  		var uri = `/static/pl.html?title=${title}&desc=New&barcode=${barcodes[0]}&qty=${qtys[0]}&right=now&die=die`
+	  		window.open(uri,'_blank');
 		});
 	  socket.on('disconnect', function(){});
 	</script>
