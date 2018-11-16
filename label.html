@@ -25,17 +25,22 @@
 	  socket.on('connect', function(){
 	  	console.log("Connected to socketz");
 	  });
-	  socket.on('notice', function(data){ 
+	socket.on('notice', function(data){ 
 	  	console.log(data); 
-		});
-		socket.on('newproduct', function(data){ 
-	  	console.log(data); 
-	  		var title = data[0];
-	  		var qtys = data[1];
-	  		var barcodes = data[2];
-	  		var uri = `pl.html?title=${title}&desc=New&barcode=${barcodes[0]}&qty=${qtys[0]}&right=now&die=die`
-	  		window.open(uri,'_blank');
-		});
+	});
+	socket.on('newproduct', function(data){ 
+		console.log(data); 
+		var title = data[0];
+		var qtys = data[1];
+		var barcodes = data[2];
+		for(var i=0;i<qtys.length;i++){
+			var uri = `pl.html?title=${title}&desc=New&barcode=${barcodes[i]}&qty=${qtys[i]}&right=now&die=yes`;
+			if(qtys[i] > 0 && qtys[i] < 15){
+				console.print(`Printing ${qtys[i]} labels) ${barcodes[i]} for ${title}`);
+				window.open(uri,'_blank','toolbar=0,location=0,menubar=0,height=200,width=200');
+			}
+		}
+	});
 	  socket.on('disconnect', function(){});
 	</script>
 </body>
