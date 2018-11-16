@@ -33,7 +33,7 @@
 	  		var title = data[0];
 	  		var qtys = data[1];
 	  		var barcodes = data[2];
-	  		var uri = `static/pl.html?title=${title}&desc=New&barcode=${barcodes[0]}&qty=${qtys[0]}&right=now&die=die`
+	  		var uri = `pl.html?title=${title}&desc=New&barcode=${barcodes[0]}&qty=${qtys[0]}&right=now&die=die`
 	  		window.open(uri,'_blank');
 		});
 	  socket.on('disconnect', function(){});

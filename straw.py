@@ -238,6 +238,15 @@ def createNewShopifyProductAndVariants( product ):
 		raise RuntimeError(message)
 	else:
 		logger.info('Successfully created product id {} - {}'.format(pr.id, pr.handle))
+		logger.debug('Trying to set barcodes for variants...')
+		for i,var in enumerate(product.variants):
+			v = pr.variants[i]
+			if v.option1 == var['Option1 Value']:	# this is the right new/used variant (avoid counting errors)
+				v.barcode = var['barcode']
+			logger.debug('Assigned barcode {} to variant {}...'.format(v.barcode, v.option1)
+		
+		pr.save() # TODO second round of error checking on this one
+		
 		qtystr = ','.join( [ str(product['variants'][i]['Option1 Value']) + "," + str(product['variants'][i]['qty-reported']) for i in range(len(product['variants']))])
 		logger.info('Reported quantities: {}'.format(qtystr))
 		return((id,product))
@@ -258,7 +267,7 @@ def make_products():
 	logger.debug('We got a live one. Here it is.')
 	products = productListFromInputFormJson(request.json['answers'])
 
-	import pprint; logger.debug(pprint.pformat(products))
+	#import pprint; logger.debug(pprint.pformat(products))
 
 	id,prod = createNewShopifyProductAndVariants(products[0])
 	qtys = [ prod['variants'][i]['qty-reported'] for i in range(len(prod['variants']))]
