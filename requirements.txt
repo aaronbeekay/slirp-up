@@ -2,4 +2,4 @@ ShopifyAPI
 Flask
 Flask-SocketIO
 gunicorn
-
+eventlet

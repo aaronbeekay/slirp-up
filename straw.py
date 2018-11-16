@@ -54,6 +54,7 @@ def safeGet(dict,key1,key2):
 
 def productListFromInputFormJson( input ):
 	variants = []
+	products = []
 	
 	# Metadata that applies to all of the objects
 	mfg = safeGet(input, 'Manufacturer', 'value')
