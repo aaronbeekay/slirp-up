@@ -16,6 +16,10 @@
 //
 //----------------------------------------------------------------------------
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function getUrlParameter(sParam) {
 	var sPageURL = window.location.search.substring(1),
 		sURLVariables = sPageURL.split('&'),
@@ -194,47 +198,6 @@ function getUrlParameter(sParam) {
         };
 
         var addressLabel = null;
-        var tapeLabel = null;
-        var DZLabel = null;
-
-        // load DZ label xml
-        function getDZLabelXml()
-        {
-            var labelXml = '<?xml version="1.0" encoding="utf-8" ?>\
-                            <DieCutLabel Version="8.0" Units="twips">\
-                              <PaperOrientation>Landscape</PaperOrientation>\
-                              <Id>VinylBlkOnWht41_1mm</Id>\
-                              <IsOutlined>false</IsOutlined>\
-                              <CustomPaper>\
-                                <Size Width="2330" Height="4360" />\
-                                <PrintableSize Width="2126" Height="4360" />\
-                                <PrintableOrigin X="102" Y="0" />\
-                                <Offset X="0" Y="0" />\
-                              </CustomPaper>\
-                              <DrawCommands>\
-                                <RoundRectangle X="0" Y="-340" Width="2330" Height="5040" Rx="0" Ry="0" />\
-                              </DrawCommands>\
-                              <ObjectInfo>\
-                                <TextObject>\
-                                  <Name>Text</Name>\
-                                  <ForeColor Alpha="255" Red="0" Green="0" Blue="0" />\
-                                  <BackColor Alpha="0" Red="255" Green="255" Blue="255" />\
-                                  <LinkedObjectName></LinkedObjectName>\
-                                  <Rotation>Rotation0</Rotation>\
-                                  <IsMirrored>False</IsMirrored>\
-                                  <IsVariable>True</IsVariable>\
-                                  <HorizontalAlignment>Left</HorizontalAlignment>\
-                                  <VerticalAlignment>Middle</VerticalAlignment>\
-                                  <TextFitMode>ShrinkToFit</TextFitMode>\
-                                  <UseFullFontHeight>True</UseFullFontHeight>\
-                                  <Verticalized>False</Verticalized>\
-                                  <StyledText/>\
-                                </TextObject>\
-                                <Bounds X="332" Y="150" Width="4455" Height="1260" />\
-                              </ObjectInfo>\
-                            </DieCutLabel>';
-            return labelXml;
-        }
 
         // load address label xml
         function getAddressLabelXml()
@@ -311,8 +274,8 @@ function getUrlParameter(sParam) {
       <Text>12345</Text>\
       <Type>Code128Auto</Type>\
       <Size>Small</Size>\
-      <TextPosition>None</TextPosition>\
-      <TextFont Family="Helvetica" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False"/>\
+	  <TextPosition>Top</TextPosition>\
+      <TextFont Family="Menlo" Size="9" Bold="False" Italic="False" Underline="False" Strikeout="False"/>\
       <CheckSumFont Family="Helvetica" Size="10" Bold="False" Italic="False" Underline="False" Strikeout="False"/>\
       <TextEmbedding>None</TextEmbedding>\
       <ECLevel>0</ECLevel>\
@@ -351,54 +314,18 @@ function getUrlParameter(sParam) {
             return labelXml;
         }
 
-        // load tap label xml
-        function getTapeLabelXml()
-        {
-            var labelXml = '<?xml version="1.0" encoding="utf-8"?>\
-                            <ContinuousLabel Version="8.0" Units="twips">\
-                                <PaperOrientation>Landscape</PaperOrientation>\
-                                <Id>Tape12mm</Id>\
-                                <PaperName>12mm</PaperName>\
-                                <LengthMode>Auto</LengthMode>\
-                                <LabelLength>0</LabelLength>\
-                                <RootCell>\
-                                    <TextObject>\
-                                        <Name>Text</Name>\
-                                        <ForeColor Alpha="255" Red="0" Green="0" Blue="0" />\
-                                        <BackColor Alpha="0" Red="255" Green="255" Blue="255" />\
-                                        <LinkedObjectName></LinkedObjectName>\
-                                        <Rotation>Rotation0</Rotation>\
-                                        <IsMirrored>False</IsMirrored>\
-                                        <IsVariable>True</IsVariable>\
-                                        <HorizontalAlignment>Center</HorizontalAlignment>\
-                                        <VerticalAlignment>Middle</VerticalAlignment>\
-                                        <TextFitMode>AlwaysFit</TextFitMode>\
-                                        <UseFullFontHeight>True</UseFullFontHeight>\
-                                        <Verticalized>False</Verticalized>\
-                                        <StyledText />\
-                                    </TextObject>\
-                                    <ObjectMargin Left="0" Top="0" Right="0" Bottom="0" />\
-                                    <Length>0</Length>\
-                                    <LengthMode>Auto</LengthMode>\
-                                    <BorderWidth>0</BorderWidth>\
-                                    <BorderStyle>Solid</BorderStyle>\
-                                    <BorderColor Alpha="255" Red="0" Green="0" Blue="0" />\
-                                </RootCell>\
-                            </ContinuousLabel>';
-            return labelXml;
-        }
 
         // load labels from the xml
         function loadLabels()
         {
             // Get DZ Label
-            DZLabel = dymo.label.framework.openLabelXml(getDZLabelXml());
+            //DZLabel = dymo.label.framework.openLabelXml(getDZLabelXml());
 
             // Get Address Label
             addressLabel = dymo.label.framework.openLabelXml(getAddressLabelXml());
 
             // Get Tap Label
-            tapeLabel = dymo.label.framework.openLabelXml(getTapeLabelXml());
+            //tapeLabel = dymo.label.framework.openLabelXml(getTapeLabelXml());
         }
 
          
@@ -454,6 +381,7 @@ function getUrlParameter(sParam) {
                 printButton.disabled = true;
 
                 settings.currentPrinterName = printersComboBox.value;
+//				settings.currentPrinterName = "DYMO LabelWriter 450 Twin Turbo";
                 
                 var title = getUrlParameter('title').replace(/\+/gi,' ');
 				var desc = getUrlParameter('desc').replace(/\+/gi,' ');
@@ -506,7 +434,7 @@ function getUrlParameter(sParam) {
                 labelSet.addRecord().setText("TITLE", title);
                 // labelSet.addRecord().setText("DESC", desc);
 //                 labelSet.addRecord().setText("BARCODE", barcode);
-
+				//try to sleep here?
                 // print
                 //label.print(printer.name, null, labelSet.toString());
                 // print and get status
@@ -592,13 +520,14 @@ function getUrlParameter(sParam) {
         function maybePrint(){
 			//print the label when the page loads! we dont give a fuck!!
 			if(getUrlParameter('right') == 'now'){
+				
 				printfuckinlabel();
 			
 				if(getUrlParameter('qty')!= undefined){
 					//print several!!
-					var qty = getUrlParameter('qty')-1
+					var qty = getUrlParameter('qty')-1	// we already printed the first one
 					if(qty>=1){
-						for(i=1;i<qty;i++){ printfuckinlabel(); }
+						for(i=1;i<=qty;i++){ printfuckinlabel(); }
 					}
 				}
 				if(getUrlParameter('die')=='yes'){

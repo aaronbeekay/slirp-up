@@ -28,15 +28,18 @@
 	socket.on('notice', function(data){ 
 	  	console.log(data); 
 	});
+	var conds = ['New','Used - Like New','Used - Good','Used - Fair', 'Used - As-is/for parts'];
 	socket.on('newproduct', function(data){ 
 		console.log(data); 
-		var title = data[0];
-		var qtys = data[1];
-		var barcodes = data[2];
+		var title = (typeof data[0] !== 'undefined') ? data[0].toString() : '';
+		var qtys = (typeof data[1] !== 'undefined' ) ? data[1] : [];
+		var barcodes = typeof(data[2] !== 'undefined') ? data[2] : [];
 		for(var i=0;i<qtys.length;i++){
-			var uri = `pl.html?title=${title}&desc=New&barcode=${barcodes[i]}&qty=${qtys[i]}&right=now&die=yes`;
-			if(qtys[i] > 0 && qtys[i] < 15){
-				console.print(`Printing ${qtys[i]} labels) ${barcodes[i]} for ${title}`);
+			var qty = (typeof qtys[i] !== 'undefined') ? qtys[i] : 0;
+			var barcode = (typeof barcodes[i] !== 'undefined') ? barcodes[i] : 0;
+			var uri = `pl.html?title=${title}&desc=${conds[i]}&barcode=${barcodes[i]}&qty=${qtys[i]}&right=now&die=yes`;
+			if(qty > 0 && qty < 15){
+				console.log(`Printing ${qty} labels (${barcode}) for ${title}`);
 				window.open(uri,'_blank','toolbar=0,location=0,menubar=0,height=200,width=200');
 			}
 		}
