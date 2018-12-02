@@ -307,6 +307,17 @@ def connect_notification():
 def disconnnect_notification():
 	logger.debug('someone is here')
 	socketio.emit('notice', 'somebody left')
+	
+@socketio.on('lookup'):
+def lookup_barcode(bc):
+	try:
+		sku = int(bc)		# see if it is a valid numbah
+	except ValueError:
+		logger.info('Invalid barcode lookup request: got {}'.format(bc))
+		
+	v = shopify.
+	
+
 
 if __name__ == "__main__":
 	socketio.run(app)
