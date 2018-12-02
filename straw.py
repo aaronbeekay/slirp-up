@@ -42,8 +42,13 @@ if __name__ != '__main__':	# only do this when running w gunicorn
 		
 		
 		
-
-shop_url = "https://%s:%s@glitchlab.myshopify.com/admin" % ('2377f924487957c801e1d38eda4d984e', '585f1f62a7443249160bef32d1a5e4ba')
+try:
+	SHOPIFY_API_KEY = os.environ['SHOPIFY_API_KEY']
+	SHOPIFY_API_PASSWORD = os.environ['SHOPIFY_API_PASSWORD']
+except KeyError:
+	raise ValueError('Didn\'t find API key or password in env vars')
+	
+shop_url = "https://%s:%s@glitchlab.myshopify.com/admin" % (SHOPIFY_API_KEY, SHOPIFY_API_PASSWORD)
 shopify.ShopifyResource.set_site(shop_url)
 
 def stringEnsafen(s):
